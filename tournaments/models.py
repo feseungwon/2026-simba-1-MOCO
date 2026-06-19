@@ -8,9 +8,9 @@ import uuid
 class Tournament(models.Model):
     #토너먼트 크기 선택값
     SIZE_CHOICES = [
+        (4,"4강"),
+        (8,"8강"),
         (16,"16강"),
-        (32,"32강"),
-        (64,"64강"),
     ]
     
     #토너먼즈 진행 상태값
