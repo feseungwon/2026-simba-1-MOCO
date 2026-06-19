@@ -6,8 +6,12 @@
     background: linear-gradient(180deg, #43A4DB 0%, #FFF 140.58%);
 }
 
-/* 타이틀 영역 */
-.main-frame {
+/* ── 타이틀 영역 ── */
+.Frame81 {
+position: absolute;
+top: 127px;
+left: 65px;
+
 display: flex;
 width: 271px;
 flex-direction: column;
@@ -33,6 +37,23 @@ gap: 10px;
 align-self: stretch;
 }
 
+/* 제목 텍스트 */
+.round-text {
+align-self: stretch;
+
+color: #FFF;
+text-align: center;
+text-shadow: 0 2px 20px rgba(150, 241, 255, 0.80);
+-webkit-text-stroke-width: 0.8px;
+-webkit-text-stroke-color: #FFF;
+font-family: "Gmarket Sans TTF";
+font-size: 25px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+letter-spacing: 2.5px;
+}
+
 .Frame78 {
 display: flex;
 flex-direction: column;
@@ -42,9 +63,10 @@ gap: 8px;
 align-self: stretch;
 }
 
+/* 트로피 뱃지 */
 .Frame70 {
 display: flex;
-width: 62px;
+
 height: 23px;
 padding: 4px 8px;
 flex-direction: column;
@@ -72,13 +94,30 @@ align-items: center;
 gap: 10px;
 }
 
+.Frame67 img {
+width: 15px;
+height: 15px;
+aspect-ratio: 1/1;
+}
+
 .Frame68 {
 display: flex;
 justify-content: center;
 align-items: center;
 gap: 10px;
+
+color: #DFF3FE;
+text-align: center;
+text-shadow: 0 1px 10px #96F1FF;
+font-family: "Gmarket Sans TTF";
+font-size: 11px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 1.1px;
 }
 
+/* 경기 수 텍스트 */
 .group1 {
 height: 18px;
 align-self: stretch;
@@ -90,8 +129,19 @@ width: 271px;
 justify-content: center;
 align-items: center;
 gap: 10px;
+
+color: #FFF;
+text-align: center;
+text-shadow: 0 1px 10px #96F1FF;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 1.5px;
 }
 
+/* 마스코트 이미지 영역 */
 .Frame72 {
 display: flex;
 padding: 10px;
@@ -102,6 +152,16 @@ gap: 10px;
 align-self: stretch;
 }
 
+.moa_img {
+width: 128px;
+height: 108px;
+aspect-ratio: 32/27;
+
+background: url('/static/images/image1.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+/* ── 질문 영역 ── */
 .Frame77 {
 display: flex;
 height: 69px;
@@ -118,6 +178,15 @@ flex-direction: column;
 align-items: flex-start;
 gap: 10px;
 align-self: stretch;
+
+color: #FFF;
+text-align: center;
+text-shadow: 0 4px 20px rgba(150, 241, 255, 0.40);
+font-family: "Gmarket Sans TTF";
+font-size: 19px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px; /* 157.895% */
 }
 
 .Frame74 {
@@ -126,231 +195,252 @@ justify-content: center;
 align-items: center;
 gap: 10px;
 align-self: stretch;
+
+flex: 1 0 0;
+
+color: rgba(255, 252, 252, 0.80);
+text-align: center;
+text-shadow: 0 4px 20px rgba(150, 241, 255, 0.40);
+font-family: "Gmarket Sans TTF";
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px; /* 230.769% */
 }
 
-.Frame82 {
+/* VS 이미지 */
+.Frame83 {
+position: absolute;
+top: 417px;
+left: 50%;
+transform: translateX(-50%);
+
 display: inline-flex;
 flex-direction: column;
 align-items: flex-start;
 gap: 10px;
 }
 
-.Frame83 {
+.vs-img {
+width: 43px;
+height: 28px;
+aspect-ratio: 43/28;
+
+background: url('/static/images/image23.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 20px rgba(150, 241, 255, 0.80)) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* ── VS + 카드 영역 ── */
+.Frame82 {
+position: absolute;
+top: 460px;
+left: 50%;
+transform: translateX(-50%);
+
 display: inline-flex;
 align-items: center;
 gap: 23px;
 }
 
+/* 각 카드 래퍼 */
+.vs_product {
+display: flex;
+width: 143px;
+height: 253px;
+padding: 12px 10px 12px 11px;
+justify-content: center;
+align-items: center;
+gap: 10px;
 
-
-.title-text {
-    color: #FFF;
-    text-align: center;
-    text-shadow: 0 4px 20px rgba(150, 241, 255, 0.80);
-    font-family: "Gmarket Sans TTF";
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.4;
+border-radius: 20px;
+border: 1px solid #D3D3D3;
+background: #FFF;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.title-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.Frame29 {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 13px;
+flex: 1 0 0;
+align-self: stretch;
 }
 
-.round-badge {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.30);
-    border: 1px solid rgba(255, 255, 255, 0.50);
+/* 이미지 박스 */
+.Rectangle19 {
+height: 169px;
+align-self: stretch;
+border-radius: 20px;
+border: 1px solid #D3D3D3;
 
-    color: #FFF;
-    font-family: "Gmarket Sans TTF";
-    font-size: 11px;
-    font-weight: 500;
+background: rgba(255, 255, 255, 0.55);
+transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.progress-text {
-    color: rgba(255, 255, 255, 0.85);
-    font-family: "Gmarket Sans TTF";
-    font-size: 12px;
-    font-weight: 300;
+/* 상품 정보 */
+.Frame28 {
+display: flex;
+padding: 5px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 4px;
+flex: 1 0 0;
+align-self: stretch;
 }
 
-/* 마스코트 */
-.mascot-area {
-    position: absolute;
-    top: 130px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 110px;
+.Frame25 {
+display: flex;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
 }
 
-.mascot-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 20px rgba(150, 241, 255, 0.80));
+.Frame26 {
+display: flex;
+align-items: flex-end;
+gap: 10px;
+align-self: stretch;
 }
 
-/* 질문 영역 */
-.question-area {
-    position: absolute;
-    top: 252px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    width: 300px;
+.Frame27 {
+display: flex;
+justify-content: center;
+align-items: center;
+
+color: #6C95AC;
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
-.question-main {
-    color: #FFF;
-    text-align: center;
-    text-shadow: 0 4px 20px rgba(150, 241, 255, 0.80);
-    font-family: "Gmarket Sans TTF";
-    font-size: 18px;
-    font-weight: 500;
-    white-space: nowrap;
+.Frame26 .Frame27 {
+color: #676767;
+font-size: 13px;
 }
 
-.question-sub {
-    color: rgba(255, 255, 255, 0.80);
-    text-align: center;
-    font-family: "Gmarket Sans TTF";
-    font-size: 12px;
-    font-weight: 300;
+/* 호버 */
+.vs_product:hover {
+box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.30);
 }
 
-/* VS */
-.vs-text {
-    position: absolute;
-    top: 328px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #FFF;
-    text-align: center;
-    text-shadow: 0 4px 20px rgba(150, 241, 255, 0.80);
-    font-family: "Gmarket Sans TTF";
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    z-index: 2;
+
+/* 선택 상태 */
+.vs_product.selected {
+transform: scale(1.025);
+box-shadow: 0 10.728px 42.891px 0 rgba(0, 0, 0, 0.30);
 }
 
-/* 카드 영역 */
-.card-area {
-    position: absolute;
-    top: 355px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-.item-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.item-img-wrap {
-    width: 140px;
-    height: 175px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.55);
-    border: 1.5px solid rgba(255, 255, 255, 0.70);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.item-img-wrap:hover {
-    box-shadow: 0 8px 24px rgba(150, 241, 255, 0.50);
-}
-
-.item-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.item-name {
-    color: #2c6e9b;
-    font-family: "Gmarket Sans TTF";
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-}
-
-.item-price {
-    color: #5a8fad;
-    font-family: "Gmarket Sans TTF";
-    font-size: 11px;
-    font-weight: 300;
-    text-align: center;
-}
-
-/* 카드 선택 상태 */
-.item-card.selected .item-img-wrap {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(150, 241, 255, 0.70), 0 0 0 2px rgba(150, 241, 255, 0.50);
-}
-
-.item-card.unselected .item-img-wrap {
-    opacity: 0.55;
-}
-
-/* 다음 버튼 */
+/* ── 다음 버튼 ── */
 .next-btn {
-    position: absolute;
-    bottom: 44px;
-    left: 42px;
-    width: 307px;
-    height: 69px;
+position: absolute;
+bottom: 44px;
+left: 42px;
+width: 307px;
+height: 69px;
 
-    border: none;
-    border-radius: 56px;
-    background: rgba(180, 200, 210, 0.50);
-    box-shadow: 0 4px 10px 0 rgba(255,255,255,0.20), 0 4px 4px 0 rgba(0,0,0,0.10);
-    cursor: not-allowed;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
 
-    color: rgba(255, 255, 255, 0.60);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 23px;
-    font-weight: 700;
-    line-height: normal;
+border: none;
+border-radius: 56px;
+background: linear-gradient(180deg, #FFF 0%, #818181 100%);
+box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), 0 4px 10px 0 #FFF;
+cursor: not-allowed;
 
-    transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+color: rgba(255, 255, 255, 0.60);
+text-align: center;
+font-family: Pretendard;
+font-size: 23px;
+font-weight: 700;
+
+transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .next-btn:not(:disabled) {
-    background: linear-gradient(180deg, rgba(150, 241, 255, 0.85) 0%, rgba(62, 154, 205, 0.85) 100%);
-    box-shadow: 0 4px 10px 0 #FFF, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    color: #FFF;
-    cursor: pointer;
+background: linear-gradient(180deg, rgba(131, 229, 244, 0.85) 0%, rgba(43, 140, 192, 0.85) 100%);
+box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.80), 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+color: #FFF;
+cursor: pointer;
 }
 
 .next-btn:not(:disabled):hover {
-    background: linear-gradient(180deg, rgba(131, 229, 244, 0.85) 0%, rgba(43, 140, 192, 0.85) 100%);
-    box-shadow: 0 4px 10px 0 #FFF, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+box-shadow: 0 4px 10px 0 #FFF, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .next-btn:not(:disabled):active {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.13) 0%, rgba(0, 0, 0, 0.13) 100%), linear-gradient(180deg, rgba(131, 229, 244, 0.85) 0%, rgba(43, 140, 192, 0.85) 100%);
-    box-shadow: 0 2px 10px 0 rgba(255, 255, 255, 0.60), 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.13) 0%, rgba(0, 0, 0, 0.13) 100%),
+            linear-gradient(180deg, rgba(131, 229, 244, 0.85) 0%, rgba(43, 140, 192, 0.85) 100%);
+box-shadow: 0 2px 10px 0 rgba(255, 255, 255, 0.60), 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.image2 {
+position: absolute;
+top: 265px;
+left: 40px;
+width: 80px;
+height: 80px;
+aspect-ratio: 1/1;
+background: url('/static/images/image2.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+.image4 {
+position: absolute;
+top: 180px;
+left: 5px;
+width: 123px;
+height: 60px;
+aspect-ratio: 41/20;
+background: url('/static/images/image4.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+.image5 {
+position: absolute;
+top: 205px;
+left: 295px;
+width: 80px;
+height: 100px;
+aspect-ratio: 4/5;
+background: url('/static/images/image5.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+.image6 {
+position: absolute;
+top: 310px;
+left: -38px;
+width: 152px;
+height: 70px;
+aspect-ratio: 41/20;
+background: url('/static/images/image6.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+.image8 {
+position: absolute;
+top: 320px;
+left: 300px;
+width: 88px;
+height: 112px;
+aspect-ratio: 11/14;
+background: url('/static/images/image8.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
+}
+
+.image9 {
+position: absolute;
+top: 250px;
+left: 235px;
+width: 80px;
+height: 100px;
+aspect-ratio: 4/5;
+background: url('/static/images/image9.png') center / contain no-repeat;
+filter: drop-shadow(0 4px 30px #96F1FF);
 }
