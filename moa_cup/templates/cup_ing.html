@@ -7,15 +7,15 @@
 
 {% block content %}
 
-<div class="main-frame">
+<div class="Frame81">
     <div class="Frame80">
         <div class="Frame79">
-            <p class="">모아컵 32강</p>
+            <p class="round-text">모아컵 32강</p>
             <div class="Frame78">
                 <div class="Frame70">
                     <div class="Frame69">
                         <div class="Frame67">
-                            <img src="{% static 'icons/solar_cup-star-bold.svg' %}" alt="트로피 아이콘">
+                            <img src="{% static 'icons/solar_cup-star-bold.svg' %}" alt="trophy" width="15" height="15">
                         </div>
                         <div class="Frame68">32강</div>
                     </div>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="Frame72">
-            <img src="{% static 'images/image1.png' %}" alt="모아" class="moa-image">
+            <div class="moa_img"></div>
         </div>
     </div>
     <div class="Frame77">
@@ -35,8 +35,15 @@
     </div>
 </div>
 
+<div class="image2"></div>
+<div class="image4"></div>
+<div class="image5"></div>
+<div class="image6"></div>
+<div class="image8"></div>
+<div class="image9"></div>
+
 <div class="Frame82">
-    <div class="vs_product">
+    <div class="vs_product" id="card-left">
         <div class="Frame29">
             <div class="Rectangle19"></div>
             <div class="Frame28">
@@ -49,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="vs_product">
+    <div class="vs_product" id="card-right">
         <div class="Frame29">
             <div class="Rectangle19"></div>
             <div class="Frame28">
@@ -65,7 +72,7 @@
 </div>
 
 <div class="Frame83">
-    <img src="{% static 'images/image23.png' %}" alt="VS">
+    <div class="vs-img"></div>
 </div>
 
 <button class="next-btn" id="next-btn" disabled>다음</button>
