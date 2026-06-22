@@ -11,6 +11,5 @@ urlpatterns = [
     path("<int:pk>/share/", generate_share_link, name="create_share"),
     path("<int:pk>/restart/", tournament_restart, name="restart"),
     path("share/<uuid:token>/", shared_play, name="shared_play"),
-    path("share/<uuid:token>/intro/", share_intro, name="share_intro"),
-    path("<int:pk>/link/", cup_link, name="link"),
+    path("record/", tournament_record, name="record"),  ## url 연결 'tournaments:record'로 하시면 됩니다
 ]

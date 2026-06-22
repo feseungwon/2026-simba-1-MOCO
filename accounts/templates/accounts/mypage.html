@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<p class="page-title">마이페이지</p>
+
+<!-- Frame 176 -->
+<div class="frame-176">
+    <img class="image-11" src="" alt="프로필 이미지">
+    <div class="frame-175">
+        <p>안녕, {{ nickname }}!</p>
+        <p>오늘도 좋은 하루 보내세요</p>
+    </div>
+</div>
+
+<hr class="line-4">
+
+<!-- moa_talk -->
+<div class="moa_talk">
+    <div class="frame-37">
+        <!-- clarity:talk-bubbles-solid icon -->
+    </div>
+    <div class="frame-36">
+        <div class="frame-31">
+            <div class="frame-35">
+                <div class="frame-34">
+                    <div class="frame-33">
+                        <p>모아의 한마디</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="frame-32">
+            <div class="frame-35">
+                <div class="frame-34">
+                    <div class="frame-33">
+                        <p>다 담고 싶지만, 우선순위를 정하...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Frame 179 -->
+<div class="frame-179">
+    <div class="frame-178">
+        <p>최근 모아컵 결과</p>
+        <div class="frame-177">
+            <p>전체 보기</p>
+            <!-- line-md:chevron-up icon -->
+        </div>
+    </div>
+
+    {% for result in recent_results %}
+    <div class="product_content">
+        <div class="frame-8">
+            <div class="frame-7">
+                <div class="rectangle-34"></div>
+            </div>
+            <div class="frame-5">
+                <div class="frame-3">
+                    <div class="frame-1">
+                        <p>{{ result.winner_item.name }}</p>
+                    </div>
+                    <div class="frame-2">
+                        <p>₩ {{ result.winner_item.price }}</p>
+                    </div>
+                </div>
+                <img class="image-8" src="" alt="">
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>아직 모아컵 결과가 없어요</p>
+    {% endfor %}
+</div>
+
+<!-- Frame 195 -->
+<div class="frame-195">
+    <div class="frame-194">
+        <div class="frame-193">
+            <p>계정 관리</p>
+            <div class="frame-192">
+                <div class="frame-190">
+                    <!-- material-symbols:logout-rounded icon -->
+                    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+                </div>
+                <hr class="line-5">
+                <div class="frame-188">
+                    <!-- icon-park-outline:people icon -->
+                    <a href="#">회원탈퇴</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Frame 125 (하단 네비게이션) -->
+<div class="frame-125">
+    <div class="아이콘_홈"></div>
+    <div class="frame-124">
+        <span class="badge">3</span>
+        <img class="image-14" src="" alt="모아 캐릭터">
+        <p>보관함 현황보기</p>
+        <hr class="line-3">
+        <p>모아컵 결과 보기</p>
+    </div>
+    <div class="아이콘_홈"></div>
+    <div class="아이콘_홈"></div>
+</div>
+
+{% endblock %}

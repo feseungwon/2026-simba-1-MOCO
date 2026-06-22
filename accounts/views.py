@@ -3,6 +3,8 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from .models import Profile
 
+from items.models import Item
+from tournaments.models import Tournament
 
 def login(request):
     if request.method == 'POST':
@@ -82,3 +84,19 @@ def signup(request):
 
 def terms_detail(request):
     return render(request, 'accounts/terms.html')
+
+#mypage 구현 함수 
+def mypage(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login') ##이걸 주석처리 하시면 로그인 안 한 사용자도 가능해요 
+    
+    nickname = request.user.profile.nickname
+    
+    recent_results = Tournament.objects.filter(
+        user=request.user,
+        status='COMPLETED',
+        winner_item__isnull=False
+    ).select_related('winner_item').order_by('-completed_at')[:2]
+    
+    return render(request, 'accounts/mypage.html', {
+        'nickname': nickname, 'recent_results': recent_results})
