@@ -29,7 +29,7 @@ def create(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
     
-    #수아-수정
+    #수아-수정본
     if request.method == 'POST':
         category_id = request.POST.get('category')
         
