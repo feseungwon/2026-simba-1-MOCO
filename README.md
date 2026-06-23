@@ -3,6 +3,7 @@
 > **사고 싶은 물건을 모아두고, 모아컵으로 최종 선택까지 도와주는 소비 결정 서비스**
 <br>
 <div align="center">
+
 ![Django](https://img.shields.io/badge/Django-6.0.3-092E20?style=for-the-badge&logo=django&logoColor=white)
   
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
