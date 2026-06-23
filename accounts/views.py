@@ -29,60 +29,59 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-
-        if request.POST['password'] != request.POST['confirm']:
-            return render(request, 'accounts/signup.html', {'error': '비밀번호가 일치하지 않습니다.'})
+        errors = {}
 
         username = request.POST['username']
-
-        if len(username) < 4 or len(username) > 15:
-            return render(request, 'accounts/signup.html', {'error': '4자~15자 영문또는 숫자만 가능합니다.'})
-
-        for char in username:
-            if not ('a' <= char <= 'z' or 'A' <= char <= 'Z' or char.isdigit()):
-                return render(request, 'accounts/signup.html', {'error': '4자~15자 영문또는 숫자만 가능합니다.'})
-
-        if User.objects.filter(username=username).exists():
-            return render(request, 'accounts/signup.html', {'error': '이미 사용중인 아이디입니다.'})
-
         password = request.POST['password']
 
+        # 아이디 형식
+        if len(username) < 4 or len(username) > 15:
+            errors['username'] = '4자~15자 영문또는 숫자만 가능합니다.'
+        else:
+            for char in username:
+                if not ('a' <= char <= 'z' or 'A' <= char <= 'Z' or char.isdigit()):
+                    errors['username'] = '4자~15자 영문또는 숫자만 가능합니다.'
+                    break
+
+        # 아이디 중복
+        if not errors.get('username') and User.objects.filter(username=username).exists():
+            errors['username'] = '이미 사용중인 아이디입니다.'
+
+        # 비밀번호 형식
         if len(password) < 8:
-            return render(request, 'accounts/signup.html', {'error': '영문, 숫자, 특수문자(?,!,*등)을 조합하여 입력해주세요.'})
+            errors['password'] = '영문, 숫자, 특수문자를 조합하여 입력해주세요.'
+        else:
+            has_alpha = has_digit = has_special = False
+            for char in password:
+                if 'a' <= char <= 'z' or 'A' <= char <= 'Z':
+                    has_alpha = True
+                elif char.isdigit():
+                    has_digit = True
+                elif char in '!@#$%^&*?':
+                    has_special = True
+            if not (has_alpha and has_digit and has_special):
+                errors['password'] = '영문, 숫자, 특수문자를 조합하여 입력해주세요.'
 
-        has_alpha = False
-        has_digit = False
-        has_special = False
+        # 비밀번호 불일치
+        if password != request.POST['confirm']:
+            errors['confirm'] = '비밀번호가 일치하지 않습니다.'
 
-        for char in password:
-            if 'a' <= char <= 'z' or 'A' <= char <= 'Z':
-                has_alpha = True
-            elif char.isdigit():
-                has_digit = True
-            elif char in '!@#$%^&*?':
-                has_special = True
-
-        if not (has_alpha and has_digit and has_special):
-            return render(request, 'accounts/signup.html', {'error': '영문, 숫자, 특수문자(?,!,*등)을 조합하여 입력해주세요.'})
-
+        # 닉네임 중복
         if Profile.objects.filter(nickname=request.POST['nickname']).exists():
-            return render(request, 'accounts/signup.html', {'error': '이미 사용중인 닉네임입니다.'})
+            errors['nickname'] = '이미 사용중인 닉네임입니다.'
 
-        new_user = User.objects.create_user(
-            username=username,
-            password=password,
-        )
+        if errors:
+            return render(request, 'accounts/signup.html', {'error': errors})
 
+        new_user = User.objects.create_user(username=username, password=password)
         profile = new_user.profile
         profile.nickname = request.POST['nickname']
         profile.is_terms_agreed = True
         profile.save()
-
         auth.login(request, new_user)
-        return redirect('items:main') 
+        return redirect('items:main')
 
     return render(request, 'accounts/signup.html')
-
 
 def terms_detail(request):
     return render(request, 'accounts/terms.html')
