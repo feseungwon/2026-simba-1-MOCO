@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static humanize %}
 
 
 {% block extra_css %}
@@ -18,7 +18,7 @@
         </div>
         <div class="frame_109">
             <div class="frame_108">
-                오늘은 {{ recent_items.count }}개 발견했어요
+                오늘은 {{ today_count }}개 발견했어요
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="frame_10">
                                 {% if item.price %}
-                                ₩ {{ item.price|floatformat:0 }}
+                                ₩ {{ item.price|floatformat:0|intcomma }}
                                 {% else %}
                                 가격 미등록
                                 {% endif %}

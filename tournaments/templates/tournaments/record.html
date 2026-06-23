@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tournaments/css/record.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'accounts:mypage' %}" class="back-btn">
+    <img src="{% static 'tournaments/icons/chevron-left-gray.svg' %}" alt="뒤로가기">
+</a>
+
+<div class="record_list">모아컵 결과보기</div>
+
+<form id="delete-form" method="POST" action="{% url 'tournaments:record_delete' %}">
+    {% csrf_token %}
+
+    <div class="Frame180" id="Frame180">
+        <div class="Frame115">
+            <p>모아컵 결과</p>
+            <div class="Frame117">{{ results.count }}</div>
+            <div class="Frame182"></div>
+            <div class="Frame183" id="edit-btn">편집</div>
+        </div>
+
+        <div class="select-all-row" id="select-all-row">
+            <input type="checkbox" id="select-all" class="record-checkbox-all">
+            <label for="select-all">전체 선택</label>
+        </div>
+
+        <div class="Frame121">
+            {% for result in results %}
+            <div class="card-row">
+                <input type="checkbox" name="selected_ids" value="{{ result.pk }}" class="record-checkbox">
+                <div class="product_content_shared">
+                    <div class="Frame8_shared">
+                        <div class="Frame7_shared">
+                            {% if result.winner_item.image %}
+                                <img src="{{ result.winner_item.image.url }}" alt="{{ result.winner_item.product_name }}" class="Rectangle34_shared">
+                            {% else %}
+                                <div class="Rectangle34_shared"></div>
+                            {% endif %}
+                        </div>
+                        <div class="Frame5_shared">
+                            <div class="Frame3_shared">
+                                <div class="Frame1_shared">{{ result.completed_at|date:"Y.m.d" }}</div>
+                                <div class="Frame4_shared">{{ result.winner_item.product_name }}</div>
+                                <div class="Frame2_shared">₩ {{ result.winner_item.price|intcomma }}</div>
+                            </div>
+                            <img src="{% static 'tournaments/images/image10.png' %}" alt="트로피" class="image10_shared">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="record-empty">아직 보관함이 비어있어요.</p>
+            {% endfor %}
+        </div>
+    </div>
+</form>
+
+<script src="{% static 'tournaments/js/record.js' %}" defer></script>
+
+{% endblock %}

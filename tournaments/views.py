@@ -372,4 +372,19 @@ def tournament_record(request):
         winner_item__isnull=False
     ).select_related("winner_item", "category").order_by("-completed_at")
 
-    return render(request, "tournaments/cup_record.html", {"results": results})
+    return render(request, "tournaments/record.html", {"results": results})
+
+
+def tournament_record_delete(request):
+    if not request.user.is_authenticated:
+        return redirect("accounts:login")
+
+    if request.method == "POST":
+        selected_ids = request.POST.getlist("selected_ids")
+        Tournament.objects.filter(
+            pk__in=selected_ids,
+            user=request.user,
+            status="COMPLETED"
+        ).delete()
+
+    return redirect("tournaments:record")
