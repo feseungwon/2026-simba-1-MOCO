@@ -89,7 +89,14 @@ def tournament_create(request):
 
     # 선택한 N강보다 아이템 수가 적으면 생성 불가
     if items.count() < tournament_size:
-        return redirect("tournaments:create")
+        default_categories = Category.objects.filter(is_default=True)
+        my_categories = Category.objects.filter(creator=request.user)
+        categories = default_categories | my_categories
+        return render(request, "tournaments/cup_select.html", {
+            "categories": categories,
+            "size_choices": Tournament.SIZE_CHOICES,
+            "error": f"{tournament_size}강을 진행하려면 {tournament_size}개 이상의 아이템이 필요합니다."
+        })
 
     tournament = Tournament()
     tournament.user = request.user

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.contrib.auth.models import User
 from .models import Profile
+import random
 
 from items.models import Item
 from tournaments.models import Tournament
@@ -86,12 +87,21 @@ def signup(request):
 def terms_detail(request):
     return render(request, 'accounts/terms.html')
 
+QUOTES = [
+    "마음이 가는 것과 실제로 사고 싶은 것은 다를 수도 있어 ",
+    "충동구매보다 더 좋은 건 나에게 정말 필요한 걸 찾는 거야!",
+    "무엇을 살지 고민하는 것도 똑똑한 소비의 시작이야 💡",
+    "항상 사고 싶은 걸 다 살 수는 없어! 그래서 우리는 선택을 해. 지금 가장 갖고 싶은 단 하나를 찾아보자 ✨",
+]
+
+
 #mypage 구현 함수 
 def mypage(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login') ##이걸 주석처리 하시면 로그인 안 한 사용자도 가능해요 
     
     nickname = request.user.profile.nickname
+    quote = random.choice(QUOTES)
     
     recent_results = Tournament.objects.filter(
         user=request.user,
@@ -100,4 +110,4 @@ def mypage(request):
     ).select_related('winner_item').order_by('-completed_at')[:2]
     
     return render(request, 'accounts/mypage.html', {
-        'nickname': nickname, 'recent_results': recent_results})
+        'nickname': nickname, 'quote': quote, 'recent_results': recent_results})
