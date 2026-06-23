@@ -8,6 +8,7 @@
 ![Django](https://img.shields.io/badge/Django-6.0.3-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+<br>
 ![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-Style-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
@@ -34,10 +35,10 @@
 ## 📌 프로젝트 소개
 **MOCO**는 사용자가 사고 싶은 상품을 보관함에 저장하고,  
 카테고리별로 상품을 정리한 뒤, **토너먼트 방식의 모아컵**을 통해  
-가장 마음에 드는 상품을 고를 수 있도록 도와주는 웹 서비스입니다.  
+가장 마음에 드는 상품을 고를 수 있도록 도와주는 웹 서비스입니다.
+
 단순히 상품을 저장하는 것에서 끝나는 것이 아니라,  
-여러 후보 중 어떤 상품을 선택할지 고민하는 과정을  
-재미있는 월드컵 방식으로 풀어낸 서비스입니다.
+여러 후보 중 어떤 상품을 선택할지 고민하는 과정을 재미있는 월드컵 방식으로 풀어낸 서비스입니다.
 <br>
 
 ## 🧊 주요 기능
@@ -57,8 +58,7 @@
 - 보관함 목록 조회
 - 상품 검색
 - 상품 상세 조회
-- 상품 수정
-- 상품 삭제
+- 상품 수정 및 삭제
 - 여러 상품 선택 삭제
 - 스크랩 상품 관리
 <br>
