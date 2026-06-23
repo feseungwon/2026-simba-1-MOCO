@@ -188,12 +188,15 @@ def tournament_play(request, pk):
         round_no=tournament.current_round
     ).count()
 
-    return render(request, "tournaments/cup_ing.html", { #프론트랑 이름 통일
-        "tournament": tournament,
-        "current_match": current_match,
-        "total_matches": total_matches,
-        "round_name": get_round_name(tournament.current_round),
-    })
+    return render(request, "tournaments/cup_ing.html", {
+    "tournament": tournament,
+    "left_item": current_match.left_item, 
+    "right_item": current_match.right_item,
+    "match_id": current_match.id,
+    "current_match_no": current_match.match_no,
+    "total_matches": total_matches,
+    "round_name": get_round_name(tournament.current_round)
+})
 
 
 def tournament_result(request, pk):

@@ -58,14 +58,14 @@
         <button type="button" class="vs_product" id="card-left" data-item-id="{{ left_item.id }}">
             <div class="Frame29">
                 {% if left_item.image %}
-                    <img src="{{ left_item.image.url }}" alt="{{ left_item.name }}" class="Rectangle19">
+                    <img src="{{ left_item.image.url }}" alt="{{ left_item.product_name }}" class="Rectangle19">
                 {% else %}
                     <div class="Rectangle19"></div>
                 {% endif %}
 
                 <div class="Frame28">
                     <div class="Frame25">
-                        <div class="Frame27">{{ left_item.name }}</div>
+                        <div class="Frame27">{{ left_item.product_name }}</div>
                     </div>
                     <div class="Frame26">
                         <div class="Frame27">약 {{ left_item.price }}원</div>
@@ -77,14 +77,14 @@
         <button type="button" class="vs_product" id="card-right" data-item-id="{{ right_item.id }}">
             <div class="Frame29">
                 {% if right_item.image %}
-                    <img src="{{ right_item.image.url }}" alt="{{ right_item.name }}" class="Rectangle19">
+                    <img src="{{ right_item.image.url }}" alt="{{ right_item.product_name }}" class="Rectangle19">
                 {% else %}
                     <div class="Rectangle19"></div>
                 {% endif %}
 
                 <div class="Frame28">
                     <div class="Frame25">
-                        <div class="Frame27">{{ right_item.name }}</div>
+                        <div class="Frame27">{{ right_item.product_name }}</div>
                     </div>
                     <div class="Frame26">
                         <div class="Frame27">약 {{ right_item.price }}원</div>
