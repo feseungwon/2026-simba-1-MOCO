@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'tournaments/css/cup_ing.css' %}">
@@ -67,10 +67,10 @@
 
                 <div class="Frame28">
                     <div class="Frame25">
-                        <div class="Frame27">{{ left_item.product_name }}</div>
+                        <div class="Frame27">{{ left_item.product_name|intcomma }}</div>
                     </div>
                     <div class="Frame26">
-                        <div class="Frame27">약 {{ left_item.price }}원</div>
+                        <div class="Frame27">약 {{ left_item.price|intcomma }}원</div>
                     </div>
                 </div>
             </div>
@@ -86,10 +86,10 @@
 
                 <div class="Frame28">
                     <div class="Frame25">
-                        <div class="Frame27">{{ right_item.product_name }}</div>
+                        <div class="Frame27">{{ right_item.product_name|intcomma }}</div>
                     </div>
                     <div class="Frame26">
-                        <div class="Frame27">약 {{ right_item.price }}원</div>
+                        <div class="Frame27">약 {{ right_item.price|intcomma }}원</div>
                     </div>
                 </div>
             </div>
