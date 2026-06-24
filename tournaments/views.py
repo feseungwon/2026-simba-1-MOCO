@@ -67,7 +67,7 @@ def tournament_main(request):
 
     return render(request, "tournaments/cup_start.html", {"tournaments": tournaments})
 
-
+    
 # create
 def tournament_create(request):
     if not request.user.is_authenticated:
@@ -81,6 +81,19 @@ def tournament_create(request):
         return render(request, "tournaments/cup_select.html", {"categories": categories, "size_choices": Tournament.SIZE_CHOICES})
 
     category_id = request.POST["category"]
+
+    if category_id == 'all':  # 전체 선택
+        items = Item.objects.filter(
+            owner_user=request.user,
+            is_deleted=False
+        )
+    else:  # 특정 카테고리 선택
+        items = Item.objects.filter(
+            owner_user=request.user,
+            category_id=category_id,
+            is_deleted=False
+        )
+
     tournament_size = int(request.POST["tournament_size"])
     
     category = get_object_or_404(Category, pk=category_id)
