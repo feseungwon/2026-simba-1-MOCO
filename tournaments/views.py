@@ -78,7 +78,18 @@ def tournament_create(request):
         my_categories = Category.objects.filter(creator=request.user)
         categories = default_categories | my_categories
 
-        return render(request, "tournaments/cup_select.html", {"categories": categories, "size_choices": Tournament.SIZE_CHOICES})
+        category_item_counts = {
+            str(cat.id): Item.objects.filter(owner_user=request.user, category=cat, is_deleted=False).count()
+            for cat in categories
+        }
+        total_item_count = Item.objects.filter(owner_user=request.user, is_deleted=False).count()
+
+        return render(request, "tournaments/cup_select.html", {
+            "categories": categories,
+            "size_choices": Tournament.SIZE_CHOICES,
+            "category_item_counts": category_item_counts,
+            "total_item_count": total_item_count,
+        })
 
     category_id = request.POST["category"]
 
@@ -95,11 +106,13 @@ def tournament_create(request):
         )
 
     tournament_size = int(request.POST["tournament_size"])
-    
-    category = get_object_or_404(Category, pk=category_id)
 
-    items = Item.objects.filter(owner_user=request.user, category=category, is_deleted=False)
-
+    if category_id:
+        category = get_object_or_404(Category, pk=category_id)
+        items = Item.objects.filter(owner_user=request.user, category=category, is_deleted=False)
+    else:
+        category = None
+        items = Item.objects.filter(owner_user=request.user, is_deleted=False)
 
     # 선택한 N강보다 아이템 수가 적으면 생성 불가
     if items.count() < tournament_size:

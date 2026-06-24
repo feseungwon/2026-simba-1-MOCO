@@ -297,7 +297,10 @@ margin-left: 10px;
 
 /* recentcontent */
 .recent_content{
-    display: flex;
+width: 113px;
+height: 87px;
+
+display: flex;
 padding: 14px;
 flex-direction: column;
 align-items: flex-start;
@@ -343,7 +346,7 @@ align-self: stretch;
 
 .frame_9{
     display: flex;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 gap: 10px;
 align-self: stretch;

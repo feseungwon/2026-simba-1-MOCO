@@ -28,11 +28,11 @@ class Tournament(models.Model):
         on_delete=models.CASCADE
     )
 
-    # 토너먼트 카테고리
+    # 토너먼트 카테고리 (null=전체)
     category = models.ForeignKey(
         Category,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         on_delete=models.CASCADE
     )
 

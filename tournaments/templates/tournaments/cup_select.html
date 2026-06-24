@@ -22,6 +22,12 @@
                 <p class="category_text">어떤 카테고리로 진행할까요?</p>
 
                 <div class="Frame60">
+                    <button
+                        type="button"
+                        class="category_btn"
+                        data-category-id="">
+                        전체
+                    </button>
                     {% for category in categories %}
                         <button
                             type="button"
@@ -30,7 +36,6 @@
                             {{ category.name }}
                         </button>
                     {% empty %}
-                        <p>선택 가능한 카테고리가 없습니다.</p>
                     {% endfor %}
                 </div>
 
@@ -50,6 +55,12 @@
                                 {{ label }}
                             </button>
                         {% endfor %}
+                        <button
+                            type="button"
+                            class="round_btn"
+                            data-size="random">
+                            랜덤
+                        </button>
                     </div>
                 </div>
 
@@ -68,6 +79,17 @@
     <button type="submit" class="start_btn">시작하기</button>
 </form>
 
+<div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+        <p id="modal-message" class="modal-message"></p>
+        <button type="button" id="modal-close" class="modal-close-btn">확인</button>
+    </div>
+</div>
+
+<script>
+    const CATEGORY_ITEM_COUNTS = {{ category_item_counts|safe }};
+    const TOTAL_ITEM_COUNT = {{ total_item_count }};
+</script>
 <script src="{% static 'tournaments/js/cup_select.js' %}"></script>
 
 {% endblock %}
