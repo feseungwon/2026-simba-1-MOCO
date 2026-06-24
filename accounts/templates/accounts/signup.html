@@ -17,7 +17,7 @@
     
     <div class="line-md"> </div>
     <div class="frame_100">
-        <img src="{% static 'images/mocococo.png' %}" alt="모코">
+        <img class="mococo" src="{% static 'images/mocococo.png' %}" alt="모코">
         <form action="{% url 'accounts:signup' %}" method="post">
 
         {% csrf_token %}

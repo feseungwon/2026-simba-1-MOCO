@@ -245,8 +245,8 @@ line-height: normal;
     justify-content: center;
     align-items: center;
     padding: 20px 33px;
-    box-sizing: border-box;
-    margin-top : px;
+    box-sizing: border-box; 
+    margin-top: 25px;
 
 }
 
@@ -277,4 +277,8 @@ margin-bottom: 30px;
 .frame_151 {
     border: none;
     cursor: pointer;
+}
+
+.selector {
+    cursor: default;
 }

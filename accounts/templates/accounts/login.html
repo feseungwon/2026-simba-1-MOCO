@@ -25,17 +25,18 @@
                     <input type="password" name="password" id="password" placeholder="비밀번호 입력">
                 </div>
 
-                <div class="gap_1"></div>
+                <div class="gap_1"> <p id="login-msg">{% if error %}{{ error }}{% endif %}</p></div>
+
+            
 
                 <div class="pw">비밀번호를 잊으셨나요?</div>
 
-                <p id="login-msg">{% if error %}{{ error }}{% endif %}</p>
+    
 
                 <div class="gap_2"></div>
 
                 <button type="submit" class="frame_88" id="login-btn">
                     <span class="normal">로그인</span>
-                    <span class="hover-text">시작하기</span>
                 </button>
             </div>
         </form>
