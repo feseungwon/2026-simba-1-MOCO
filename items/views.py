@@ -3,6 +3,8 @@ from .models import Item
 from categories.models import Category
 from django.utils import timezone
 import random
+from django.db.models import ProtectedError
+
 def storage(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
@@ -127,7 +129,7 @@ def plus_info(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
     
-    category_id = request.GET.get('category')
+    category_id = request.GET.get('category')   
     selected_category = get_object_or_404(Category, pk=category_id) if category_id else None
     
     categories = Category.objects.filter(creator=request.user) | Category.objects.filter(is_default=True)
@@ -207,8 +209,11 @@ def delete_multiple(request):
         item_ids = request.POST.getlist('item_ids')
         for item_id in item_ids:
             item = get_object_or_404(Item, pk=item_id, owner_user=request.user)
-            item.is_deleted = True
-            item.save()
+            try:
+                item.delete()  # 실제 삭제 시도
+            except ProtectedError:
+                item.is_deleted = True  # 토너먼트에 연결되어 있으면 soft delete
+                item.save()
     
     return redirect('items:storage')
 
